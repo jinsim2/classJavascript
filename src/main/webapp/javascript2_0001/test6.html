@@ -131,46 +131,60 @@
 		document.write(num3 + " : 0보다 크다!<br>");
 	} else if(num3 < 0) {
 		document.write(num3 + " : 0보다 작다!<br>");
-	} else {
-		// num3 가 0보다 크지 않고, 0보다 작지도 않을 경우(=0과 같은 경우) 실행할 문장
-		// 이 때, else 대신 else if(num3 == 0) 문장도 사용 가능함
-		// => 단, 만약 num3 가 null 이나 nudefined 등 숫자가 아닌 값일 경우
-		//    else 문에 모두 포함될 수 있으므로 상황에 맞게 else 또는 else if 사용해야 한다!
+	} else { // num3 가 0보다 크지 않고, 0보다 작지도 않을 경우(=0과 같은 경우) 실행할 문장
 		document.write(num3 + " : 0 이다!<br>");
 	}
 	
 	document.write("<hr>");
 	
-	// 변수 age2 에 나이를 저장하고 나이 판별
-	// => 10대 or 20대 or 30대 or 나머지
-	// => 10대? 나이(age2)가 10이상 [이고], 나이(age2)가 19이하
-	let age2 = 41;
+	// ===================================================================================
+	// [ 자바스크립트 특이사항 ]
+	// - 자바스크립트에서 boolean 타입이 아닌 데이터를 if문 조건식에 사용 가능
+	//   => 조건식에 지정된 값이 있으면 true, 없으면 false 로 취급됨(값 자체의 존재 여부 판별)
+// 	let data = "Hello"; // 문자열이 있으므로 true
+// 	let data = ""; // 문자열은 맞지만, 문자열의 내용이 존재하지 않으므로 false
+//  let data = 1; // 정수 데이터가 존재하므로 true
+// 	let data = 3.14; // 실수 데이터가 있으므로 true
+// 	let data = null; // null 도 false 로 취급
+	let data; // 값이 저장되지 않은 변수는 undefined 이므로 false 로 취급
 	
-	if(age2 >= 10 && age2 <= 19) {
-		document.write(age2 + " : 10대입니다!<br>");
-	} else if(age2 >= 20 && age2 <= 29) {
-		document.write(age2 + " : 20대입니다!<br>");
-	} else if(age2 >= 30 && age2 <= 39) {
-		document.write(age2 + " : 30대입니다!<br>");
+	if(data) { // 데이터가 존재하면 true, 아니면 false
+		document.write(data + " : true");
 	} else {
-		document.write(age2 + " : 나머지!<br>");
+		document.write(data + " : false");
+	}	
+		
+	document.write("<hr>");
+	// =========================================================================
+	// if문과 논리연산자(AND, OR, NOT)를 조합하여 다양한 조건 설정 가능
+	// 1) AND(&&) : 두 피연산자가 모두 true 이면 true, 하나라도 false 이면 false
+	// 2) OR(||) : 두 피연산자 중 하나라도 true 이면 true, 둘 다 false 면 false
+	// 3) NOT(!) : 단항연산자로 현재 상태(true or false)를 반전시킴
+	// -------------------------------------------------------------------------
+	// 정수 x 가 1 ~ 10 사이인지 판별 
+	// => 정수 x 가 1보다 크거나 같고, 10보다 작거나 같을 때 true
+	// => ~ 이고, 그리고 등의 단어가 포함되면 AND 연산자(&&) 로 조건 결합
+	// => 정수 x 가 1보다 크거나 같다 AND 정수 x 가 10보다 작거나 같다
+	let x = 15;
+		if(x >= 1 && x <= 10) {
+			document.write(x + " : 1 ~ 10 사이의 값!<br>");
+		} else {
+			document.write(x + " : 1 ~ 10 사이의 값이 아님!<br>");
+		}
+		
+	document.write("<hr>");
+	
+	// 정수 x 가 5보다 작거나 또는 10보다 클 때 true
+	// => ~ 이거나, 또는 등의 당어가 포함되면 OR 연산자(||) 로 조건 결합
+	// => 정수 x 가 5보다 작다 OR 정수 x 가 10보다 크다
+	x = 15;
+	if(x < 5 || x > 10) {
+		document.write(x + " : 5 미만 또는 10 초과!<br>");
+	} else {
+		document.write(x + " : 5 미만 또는 10 초과 아님!<br>");
 	}
 	
 	document.write("<hr>");
-	
-	// 특이사항. 자바스크립트에서 boolean 타입이 아닌 데이터를 if문 조건식에 사용 가능
-	// => 조건식에 지정된 값이 있으면 true, 없으면 false 로 취급됨(값 자체의 존재 여부 판별)
-// 	let data = "Hello"; // 문자열이 있으므로 true
-// 	let data = ""; // 문자열이긴 하나 널스트링은 문자열이 없으므로 false
-// 	let data; // 값이 없는 undefined 이므로 false
-// 	let data = null; // null 도 false 로 취급
-	let data = 3.14; // 실수 데이터가 있으므로 true
-	
-	if(data) {
-		document.write(data + " : true<br>");
-	} else {
-		document.write(data + " : false<br>");
-	}
 	
 	</script>
 	
